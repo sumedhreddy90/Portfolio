@@ -5,5 +5,5 @@ app.get("",(req,res)=>{
     res.send("Connecting Heroku for dynamic Test")
 });
 app.listen(PORT, () => {
-    crossOriginIsolated.log('App up at port ${PORT}');
+    console.log('App up at port ${PORT}');
 });
