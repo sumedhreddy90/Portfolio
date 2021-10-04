@@ -1,13 +1,25 @@
 //imports
 const express = require('express')
+const mongoose = require('mongoose')
 const app = express()
-const port = process.env.PORT || 5000;
-const portfolio = require('./routes/portfolio')
+
+// ! connect to mongodb database
+mongoose.connect('mongodb://localhost/blog', {
+    useNewUrlParser: true,
+    useUnifiedTopology: true,
+    
+})
+// middleware
+app.use(express.urlencoded({extented: true}))
 //static files
 app.use('/', express.static('public'))
 // Set Views
 app.set('views', './views')
 app.set('view engine', 'ejs')
+
+const port = process.env.PORT || 5000;
+const portfolio = require('./routes/portfolio')
+
 //Navigation
 // app.use('/portfolio'/ portfolio)
 app.get('/',(req, res)=>{
