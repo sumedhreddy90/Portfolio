@@ -13,11 +13,12 @@ mongoose.connect('mongodb://localhost/blog', {
 app.use(express.urlencoded({extented: true}))
 //static files
 app.use('/', express.static('public'))
+app.use(express.static(__dirname + ''));
 // Set Views
 app.set('views', './views')
 app.set('view engine', 'ejs')
 
-const port = process.env.PORT || 5000;
+const port = process.env.PORT || 5000
 const portfolio = require('./routes/portfolio')
 
 //Navigation
