@@ -4,11 +4,17 @@ const mongoose = require('mongoose')
 const app = express()
 
 // ! connect to mongodb database
-mongoose.connect('mongodb://localhost/blog', {
-    useNewUrlParser: true,
-    useUnifiedTopology: true,
-    
-})
+mongoose.connect(
+    "mongodb://localhost/blog",
+    {
+      useNewUrlParser: true,
+      useUnifiedTopology: true,
+    },
+    () => {
+      console.log("Connection to mongodb database was successful!");
+    }
+  );
+  
 // middleware
 app.use(express.urlencoded({extented: true}))
 //static files
@@ -19,9 +25,10 @@ app.set('views', './views')
 app.set('view engine', 'ejs')
 
 const port = process.env.PORT || 5000
-const portfolio = require('./routes/portfolio')
+//const portfolio = require('./routes/portfolio')
 
 //Navigation
+//app.use(require('./routes/main'))
 // app.use('/portfolio'/ portfolio)
 app.get('/',(req, res)=>{
     res.render('index')
