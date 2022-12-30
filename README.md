@@ -6,4 +6,4 @@
 3.Mongo DB
 
 ## TODO
-1. Implement blog
+1. Implement blog by end of Jan first week
